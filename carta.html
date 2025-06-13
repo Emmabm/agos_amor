@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi amor 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(./img/nosotros.jpeg); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Quicksand', sans-serif;
+      backdrop-filter: brightness(0.7);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 650px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1s ease, transform 1s ease;
+      pointer-events: none;
+    }
+
+    .container.show {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #d6336c;
+      margin-bottom: 0;
+    }
+
+    .typing {
+      font-size: 1.1em;
+      margin-top: 20px;
+      text-align: left;
+      white-space: pre-wrap;
+      line-height: 1.7;
+      min-height: 250px;
+    }
+
+    .heart {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 2em;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="carta">
+    <div class="heart">❤️</div>
+    <h1>Feliz 9 meses, mi amor</h1>
+    <div class="typing" id="text"></div>
+  </div>
+
+  <script>
+    const text = `
+Hola mi amor,
+
+Ya pasaron 9 meses desde que empezamos esta aventura juntos... y la verdad, no puedo estar más feliz de tenerte en mi vida.
+
+Sé que esta semana estuve a mil, y por momentos capaz no estuve tan presente como me hubiera gustado. Te pido perdón por eso. A veces el día no me da y termino llegando fundido. Pero aún así, en cada momento, vos estás en mi cabeza y en mi corazón.
+
+Quiero que sepas que te valoro con todo lo que soy. Sos mi lugar seguro, mi cable a tierra, y esa personita que con solo una sonrisa me cambia todo el día. No me sale explicarlo con palabras, pero lo siento fuerte, de verdad.
+
+Gracias por tu paciencia, por bancarme, por estar. Gracias por cada charla, cada abrazo, cada risa que compartimos. No sos una parte de mi vida: sos mi vida.
+
+Ojalá sigamos sumando muchos meses más, creciendo juntos, superando todo como equipo. Te prometo que voy a seguir dando lo mejor de mí, no solo en los momentos lindos, sino también cuando haya que remarla.
+
+Te amo con el alma, y no me imagino este camino sin vos al lado mío.
+
+Siempre tuyo,
+💖 Tu amor.`;
+
+    const carta = document.getElementById("carta");
+    const textContainer = document.getElementById("text");
+
+    function type() {
+      let i = 0;
+      function writeChar() {
+        if (i < text.length) {
+          textContainer.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(writeChar, 40); 
+        }
+      }
+      writeChar();
+    }
+
+    setTimeout(() => {
+      carta.classList.add("show");
+      type();
+    }, 6000);
+  </script>
+
+</body>
+</html>
